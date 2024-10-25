@@ -19,6 +19,7 @@
 // get refs to the input and output elements in the page
 const input = document.getElementById("target");
 const output = document.querySelector("output");
+const unorderedList = document.getElementById("available-targets");
 
 // when the input has focus and enter is pressed, invoke the function named later
 input.addEventListener("keydown", (ev) => {
@@ -26,6 +27,15 @@ input.addEventListener("keydown", (ev) => {
   if (ev.key === "Enter") {
     console.log("Enter detected. current value:", input.value);
     // TODO use the provided later() function here
+    options((keys) => {
+      console.log("here");
+      for (let i = 0; i < keys.length; i++) {
+        console.log(keys[i]);
+        const newButton = document.createElement('button');
+        newButton.textContent = keys[i];
+        unorderedList.appendChild(newButton);
+      }
+    }, input.value);
     later(input.value, setOutput);
   }
 });
