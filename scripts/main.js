@@ -26,6 +26,9 @@ input.addEventListener("keydown", (ev) => {
   if (ev.key === "Enter") {
     console.log("Enter detected. current value:", input.value);
     // TODO use the provided later() function here
+    later(input.value, (result) => {
+      output.value = result.valediction + ", " + result.target;
+    })
   }
 });
 
